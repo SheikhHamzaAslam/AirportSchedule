@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_55sdp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_3sdp"
+            app:title="@string/flight_details"
+            app:titleTextColor="@color/colorAccent"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:navigationIcon="@drawable/ic_backspace"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/appbar"
+        app:layout_constraintBottom_toTopOf="@+id/ads_container_bottom">
+
+        <LinearLayout
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            tools:context=".activities.PlaneDetailsActivity">
+
+            <LinearLayout
+                android:id="@+id/details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/round_corners_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_240sdp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/details_bg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="horizontal"
+                        android:baselineAligned="false"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/from"
+                                android:layout_marginTop="@dimen/_30sdp"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/raleway_semi_bold"/>
+
+                            <xyz.peridy.shimmerlayout.ShimmerLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:shimmer_center_width="20dp"
+                                app:shimmer_width="50dp"
+                                app:shimmer_angle="30"
+                                app:shimmer_duration="2500"
+                                app:shimmer_color="#7AD6A0">
+
+                                <TextView
+                                    android:id="@+id/depAirportCode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_marginStart="@dimen/_20sdp"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="40sp"
+                                    android:fontFamily="@font/raleway_bold"/>
+
+                            </xyz.peridy.shimmerlayout.ShimmerLayout>
+
+                            <TextView
+                                android:id="@+id/depAirportName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:maxLines="3"
+                                android:lines="3"
+                                android:textColor="@color/textColor"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/raleway_semi_bold"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/to"
+                                android:layout_marginTop="@dimen/_30sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/raleway_semi_bold"/>
+
+                            <xyz.peridy.shimmerlayout.ShimmerLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:shimmer_center_width="20dp"
+                                app:shimmer_width="50dp"
+                                app:shimmer_angle="30"
+                                app:shimmer_duration="2500"
+                                app:shimmer_color="#FF783F">
+
+                                <TextView
+                                    android:id="@+id/arrAirportCode"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:layout_marginStart="@dimen/_10sdp"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="40sp"
+                                    android:fontFamily="@font/raleway_bold"/>
+
+                            </xyz.peridy.shimmerlayout.ShimmerLayout>
+
+                            <TextView
+                                android:id="@+id/arrAirportName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_8sdp"
+                                android:maxLines="3"
+                                android:lines="3"
+                                android:textColor="@color/textColor"
+                                android:textSize="16sp"
+                                android:fontFamily="@font/raleway_semi_bold"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:src="@drawable/airplane_live"/>
+
+                    <ImageView
+                        android:layout_width="@dimen/_200sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:scaleType="fitXY"
+                        android:layout_marginTop="-20dp"
+                        android:src="@drawable/bottom_line"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp" >
+
+                <FrameLayout
+                    android:id="@+id/adaptive_banner_container_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:gravity="center"
+                        android:background="@drawable/more_options_bg">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:src="@drawable/flight_icon"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="@string/flight"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:visibility="gone"
+                            android:text="@string/number"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/flightNumberIATA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                        <TextView
+                            android:id="@+id/flightNumberICAO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/status"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/flightStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_1sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:gravity="center"
+                        android:background="@drawable/more_options_bg">
+
+                        <ImageView
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/airline_icon"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:text="@string/airline"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:visibility="gone"
+                            android:text="@string/name"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/airlineName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:textSize="14sp"
+                            android:textColor="@color/textColor"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                        <TextView
+                            android:id="@+id/airlineICAO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:textSize="14sp"
+                            android:textColor="@color/textColor"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:gravity="center"
+                        android:background="@drawable/more_options_bg">
+
+                        <ImageView
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/aircraft_icon"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/aircraft_cap"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:visibility="gone"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/registration"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/aircraftReg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_medium"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/bottom_line"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp" >
+
+                <FrameLayout
+                    android:id="@+id/adaptive_banner_container_mid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:baselineAligned="false"
+                android:background="@drawable/round_corners_bg">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/more_options_bg">
+
+                        <ImageView
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/aircraft_icon"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/departure"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/departure_time"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/departureTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/schDep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/scheduled"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depScheduled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/estDep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/estimated"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depEstimated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/gate"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depGate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/terminal"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depTerminal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/baggage"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depBaggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/city"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depCity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/country"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/depCountry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_72sdp"
+                        android:layout_height="@dimen/_72sdp"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:background="@drawable/more_options_bg">
+
+                        <ImageView
+                            android:layout_width="@dimen/_24sdp"
+                            android:layout_height="@dimen/_24sdp"
+                            android:src="@drawable/arrival_icon"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/arrival"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorAccent"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/arrival_time"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrivalTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/schArr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/scheduled"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrScheduled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/estArr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/estimated"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrEstimated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/fira_sans_regular"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/gate"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrGate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/terminal"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrTerminal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/baggage"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrBaggage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/city"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrCity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@string/country"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/raleway_bold"/>
+
+                        <TextView
+                            android:id="@+id/arrCountry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/raleway_medium"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY"
+                android:src="@drawable/bottom_line"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp" >
+
+                <FrameLayout
+                    android:id="@+id/adaptive_banner_container_center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_5sdp"
+                android:visibility="gone"
+                android:weightSum="2"
+                android:baselineAligned="false"
+                android:background="@drawable/round_corners_bg">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="0.6"
+                            android:layout_marginStart="@dimen/_20sdp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:text="@string/latitude"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/raleway_bold"/>
+
+                            <TextView
+                                android:id="@+id/latitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:maxLength="7"
+                                android:textColor="@color/textColor"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/fira_sans_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="0.6"
+                            android:layout_marginStart="@dimen/_20sdp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:text="@string/altitude"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/raleway_bold"/>
+
+                            <TextView
+                                android:id="@+id/altitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:maxLength="7"
+                                android:textColor="@color/textColor"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/fira_sans_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/planeSpeed"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="0.6"
+                            android:layout_marginStart="@dimen/_20sdp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:maxLines="1"
+                                android:lines="1"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:text="@string/speed"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/raleway_bold"/>
+
+                            <TextView
+                                android:id="@+id/speed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:maxLength="7"
+                                android:textColor="@color/textColor"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/fira_sans_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="0.6"
+                            android:layout_marginStart="@dimen/_20sdp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.1"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:text="@string/longitude"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/raleway_bold"/>
+
+                            <TextView
+                                android:id="@+id/longitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:maxLength="7"
+                                android:textColor="@color/textColor"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/fira_sans_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_80sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:weightSum="2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_weight="0.6"
+                            android:layout_marginStart="@dimen/_20sdp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:singleLine="true"
+                                android:lines="1"
+                                android:maxLines="1"
+                                android:ellipsize="end"
+                                android:text="@string/heading"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/raleway_bold"/>
+
+                            <TextView
+                                android:id="@+id/heading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginStart="@dimen/_5sdp"
+                                android:textColor="@color/textColor"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/fira_sans_regular"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_5sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/ads_container_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <FrameLayout
+            android:id="@+id/adaptive_banner_container_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

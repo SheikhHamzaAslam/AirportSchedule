@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1059899334574",
+    "project_id": "online-flight-schedule",
+    "storage_bucket": "online-flight-schedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1059899334574:android:cb54fdc970b8f62303f23f",
+        "android_client_info": {
+          "package_name": "com.airport.flightsschedule.flightstatus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1059899334574-6e4cpro0ln69gub5eh2om7betpsms7ma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.airport.flightsschedule.flightstatus",
+            "certificate_hash": "f3cda99a439e14b0cc2678c945dd5b89bea652c2"
+          }
+        },
+        {
+          "client_id": "1059899334574-evqhjuta86ov90767298jgsc0iep47pg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLvcbDpgZcw3JA0AotYNOX9mqqXTKOh14"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1059899334574-evqhjuta86ov90767298jgsc0iep47pg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

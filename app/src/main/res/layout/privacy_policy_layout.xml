@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/privacyPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center_horizontal"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/colorAccent"
+                android:textSize="32sp"
+                android:fontFamily="@font/raleway_bold"/>
+
+            <ImageView
+                android:id="@+id/panelImg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@drawable/privacy_illustration"/>
+
+            <LinearLayout
+                android:id="@+id/ad_unified_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="5dp">
+
+                <include layout="@layout/unified_ad" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp"
+                android:lineHeight="@dimen/_18sdp"
+                android:gravity="start"
+                android:text="@string/privacy_first_para"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:fontFamily="@font/raleway_bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:padding="@dimen/_10sdp"
+                android:lineHeight="@dimen/_18sdp"
+                android:gravity="start"
+                android:text="@string/privacy_second_para"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:fontFamily="@font/raleway_bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:padding="@dimen/_10sdp"
+                android:lineHeight="@dimen/_18sdp"
+                android:gravity="start"
+                android:text="@string/privacy_third_para"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:fontFamily="@font/raleway_bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="#f0f0f0"
+        android:paddingTop="@dimen/_10sdp"
+        android:layout_alignParentBottom="true">
+
+        <RadioButton
+            android:id="@+id/privacyLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="@string/accept_privacy_policy"
+            android:textSize="14sp"
+            android:fontFamily="@font/raleway_medium"/>
+
+        <Button
+            android:id="@+id/accept"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:gravity="center"
+            android:lines="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/accept"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/raleway_bold"
+            android:background="@drawable/details_button_bg"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawablePadding="@dimen/_10sdp"
+    android:fontFamily="@font/fira_sans_medium"
+    android:gravity="center_vertical"
+    android:padding="@dimen/_10sdp"
+    android:textColor="@color/colorAccent"
+    app:drawableLeftCompat="@drawable/ic_airport"
+    app:drawableStartCompat="@drawable/ic_airport">
+
+</TextView>

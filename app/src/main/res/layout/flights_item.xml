@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/details"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/round_corners_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/callSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/raleway_bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_240sdp"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/from"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/raleway_semi_bold"/>
+
+                <xyz.peridy.shimmerlayout.ShimmerLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shimmer_center_width="20dp"
+                    app:shimmer_width="50dp"
+                    app:shimmer_angle="30"
+                    app:shimmer_duration="2500"
+                    app:shimmer_color="#7AD6A0">
+
+                    <TextView
+                        android:id="@+id/depAirportCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="40sp"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                </xyz.peridy.shimmerlayout.ShimmerLayout>
+
+                <TextView
+                    android:id="@+id/depAirportName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/raleway_semi_bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/to"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/raleway_semi_bold"/>
+
+                <xyz.peridy.shimmerlayout.ShimmerLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:shimmer_center_width="20dp"
+                    app:shimmer_width="50dp"
+                    app:shimmer_angle="30"
+                    app:shimmer_duration="2500"
+                    app:shimmer_color="#FF783F">
+
+                    <TextView
+                        android:id="@+id/arrAirportCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="40sp"
+                        android:fontFamily="@font/raleway_bold"/>
+
+                </xyz.peridy.shimmerlayout.ShimmerLayout>
+
+                <TextView
+                    android:id="@+id/arrAirportName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:maxLines="3"
+                    android:lines="3"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/raleway_semi_bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/airplane_live"/>
+
+        <ImageView
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:layout_marginTop="-20dp"
+            android:src="@drawable/bottom_line"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/planeDetails"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="@dimen/_4sdp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:text="@string/plane_details"
+        android:maxLength="8"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:fontFamily="@font/raleway_bold"
+        android:background="@drawable/details"/>
+
+</LinearLayout>

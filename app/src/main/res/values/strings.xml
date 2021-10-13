@@ -1,0 +1,112 @@
+<resources>
+    <string name="app_name">Online Flight Schedule</string>
+    <string name="enter_airport_or_city_name">Enter airport or city name</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="failed_get_flights">Unable to get flights</string>
+    <string name="no_flights_found">No flights found</string>
+    <string name="airports_arr_dep"><![CDATA[Airport Arr & Dep]]></string>
+    <string name="ad">Ad</string>
+    <string name="name">Name:</string>
+    <string name="short_name">Short Name</string>
+    <string name="arrivals">Arrivals</string>
+    <string name="departures">Departures</string>
+    <string name="loading">Loading…</string>
+    <string name="loading_text">Be patient. We are fetching Airport Schedule. It might take some time. Thank you!</string>
+    <string name="update_loading_text">Loading more flights. Be patient it might take few seconds. Thank you!</string>
+    <string name="retrieving_arrival_flights">Retrieving Arrival Flights</string>
+    <string name="retrieving_departure_flights">Retrieving Departure Flights</string>
+    <string name="track_any_flight">Get Airports Schedule</string>
+    <string name="get_airport_schedule">Get Airport Schedule</string>
+    <string name="from">FROM</string>
+    <string name="to">TO</string>
+    <string name="plane_details">DETAILS</string>
+    <string name="flight_details">FLIGHT DETAILS</string>
+    <string name="close">CLOSE</string>
+    <string name="aircraft_cap">AIRCRAFT</string>
+    <string name="flight">FLIGHT</string>
+    <string name="registration">Registration:</string>
+    <string name="type">Type:</string>
+    <string name="desc">Desc:</string>
+    <string name="number">Number:</string>
+    <string name="airline">AIRLINE</string>
+    <string name="status">Status:</string>
+    <string name="gate">Gate:</string>
+    <string name="city">City:</string>
+    <string name="state">State:</string>
+    <string name="country">Country:</string>
+    <string name="terminal">Terminal:</string>
+    <string name="baggage">Baggage:</string>
+    <string name="actual">Actual:</string>
+    <string name="estimated">Estimated:</string>
+    <string name="scheduled">Scheduled:</string>
+    <string name="departure">DEPARTURE</string>
+    <string name="departure_time">Departure Time:</string>
+    <string name="arrival">ARRIVAL</string>
+    <string name="arrival_time">Arrival Time:</string>
+    <string name="actual_landing">Actual Landing:</string>
+    <string name="calculated_landing">Calculated Landing:</string>
+    <string name="delay_reason">Delay Reason:</string>
+    <string name="arrival_delay_detail">Arrival Delay Detail:</string>
+    <string name="actual_take_off">Actual Take Off:</string>
+    <string name="calculated_take_off">Calculated Take Off:</string>
+    <string name="departure_delay_detail">Departure Delay Detail:</string>
+    <string name="latitude">LAT:</string>
+    <string name="altitude">ALTITUDE:</string>
+    <string name="speed">SPEED:</string>
+    <string name="longitude">LONG:</string>
+    <string name="heading">HEADING:</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="share_app">Share App</string>
+    <string name="more_apps">More Apps</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="user_agreement">User Agreement</string>
+    <string name="rate">Rate</string>
+    <string name="review">Give us 5 Star Review!</string>
+    <string name="support">Thank you for using this application. If you like this app, please support us and rate 5 stars to our app.</string>
+    <string name="not_really">Not Really</string>
+    <string name="yes">Yes!</string>
+    <string name="try_flight_tracker">Try our Online Flight Schedule app to track airports schedule and flight details.</string>
+    <string name="privacy_first_para"><b>Redline Technology</b> is committed to protecting your privacy. Our guiding principle toward data collection is to collect only the minimal data required to operate a
+        world-class app service at scale. We want you to understand what information we collect, what we do not collect, and how we collect, use, and store information.</string>
+    <string name="privacy_second_para">We do not collect logs of your activity, including no logging of browsing history, traffic destination, or DNS queries. We also never store connection logs, i.e., no logs
+        of your IP address, your outgoing IP address, connection timestamp, or session duration. We designed our systems not to have sensitive data about you; even when compelled, we cannot provide data
+        that we do not possess.</string>
+    <string name="privacy_third_para">This Privacy Policy describes how <b>Redline Technology</b> and its affiliates ("Redline Technology," "we," "our" or "us") collect, use, and share information in connection with
+        your use of our services, and applications (collectively, the "Services"). This Privacy Policy (the "Privacy Policy") does not apply to information you may process when using our Services.</string>
+    <string name="accept_privacy_policy">Accept the <font color="#0000FF"><u>Privacy Policy</u></font> to Continue.</string>
+    <string name="read_privacy_policy">Read Our <font color="#FF783F"><u>Privacy Policy</u></font></string>
+    <string name="open">open</string>
+    <string name="accept">CLOSE</string>
+    <string name="next">Continue</string>
+    <string name="accept_continue">ACCEPT &amp; CONTINUE</string>
+    <string name="no_browser">No Browser Found!</string>
+    <string name="exit">Exit</string>
+    <string name="exit_application">Exit Application</string>
+    <string name="blocked_by_developer">Blocked by Developer</string>
+    <string name="para_one">For your security, your phone is not allowed to install this app from unknown source which can be unsafe some time.</string>
+    <string name="para_two">Your phone and personal data are more valunerable to attack by apps from unknown sources .</string>
+    <string name="install">Install From PlayStore</string>
+
+    <!--AdMob Test Ads-->
+    <string name="app_open_ad">ca-app-pub-3940256099942544/3419835294</string>
+    <string name="splash_rectangle_ad">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="splash_adaptive_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="splash_native_ad">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="splash_interstitial_ad">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="main_rectangle_ad_">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="main_adaptive_banner">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="main_native_ad">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="main_interstitial_ad">ca-app-pub-3940256099942544/1033173712</string>
+
+    <!--AdMob Live Ads-->
+    <!--<string name="app_open_ad">ca-app-pub-9767744518035218/8087488055</string>
+    <string name="splash_rectangle_ad">ca-app-pub-9767744518035218/1869741670</string>
+    <string name="splash_adaptive_banner">ca-app-pub-9767744518035218/3633237722</string>
+    <string name="splash_native_ad">ca-app-pub-9767744518035218/1813901356</string>
+    <string name="splash_interstitial_ad">ca-app-pub-9767744518035218/5764577040</string>
+    <string name="main_rectangle_ad_">ca-app-pub-9767744518035218/8199168698</string>
+    <string name="main_adaptive_banner">ca-app-pub-9767744518035218/5632715101</string>
+    <string name="main_native_ad">ca-app-pub-9767744518035218/6874656343</string>
+    <string name="main_interstitial_ad">ca-app-pub-9767744518035218/8693992719</string>-->
+
+</resources>

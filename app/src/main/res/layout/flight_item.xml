@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    android:elevation="@dimen/_10sdp"
+    android:background="@drawable/round_corners_bg">
+
+    <TextView
+        android:id="@+id/callSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/fira_sans_medium"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/sidebar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/callSign" />
+
+    <TextView
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/raleway_semi_bold"
+        android:text="@string/from"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/line"
+        app:layout_constraintTop_toTopOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/depAirportCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/blue"
+        android:textSize="40sp"
+        app:layout_constraintStart_toEndOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/from" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:fontFamily="@font/raleway_semi_bold"
+        android:text="@string/to"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/line"
+        app:layout_constraintStart_toEndOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/arrAirportCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:fontFamily="@font/raleway_bold"
+        android:textColor="@color/mustard"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@+id/to"
+        app:layout_constraintStart_toEndOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/depAirportName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:fontFamily="@font/raleway_semi_bold"
+        android:lines="3"
+        android:maxWidth="@dimen/_100sdp"
+        android:maxLines="3"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textDirection="rtl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from" />
+
+    <TextView
+        android:id="@+id/arrAirportName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:fontFamily="@font/raleway_semi_bold"
+        android:lines="3"
+        android:maxLines="3"
+        android:maxWidth="@dimen/_100sdp"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:textDirection="rtl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/to" />
+
+    <Button
+        android:id="@+id/planeDetails"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:background="@drawable/details_button_bg"
+        android:fontFamily="@font/fira_sans_bold"
+        android:lines="1"
+        android:maxLength="8"
+        android:maxLines="1"
+        android:paddingBottom="@dimen/_4sdp"
+        android:singleLine="true"
+        android:text="@string/plane_details"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/to" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/planeDetails" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
