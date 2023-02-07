@@ -139,7 +139,7 @@ public class SplashActivity extends AppCompatActivity {
         if (alertDialog.getWindow() != null)
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        if (!verifyInstallerId()) {
+        if (verifyInstallerId()) {
             showPiracyCheckerDialog();
         } else {
             rectangleAd.loadAd(adRequest);

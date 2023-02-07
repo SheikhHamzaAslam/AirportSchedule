@@ -15,9 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airport.flightsschedule.flightstatus.R;
 import com.airport.flightsschedule.flightstatus.activities.ArrivalsDeparturesActivity;
+import com.airport.flightsschedule.flightstatus.adapters.ArrDepAdapter;
+import com.airport.flightsschedule.flightstatus.adapters.NearbyAirportsAdapter;
 import com.airport.flightsschedule.flightstatus.utils.CSVFileReader;
 import com.airport.flightsschedule.flightstatus.utils.ShowNativeAd;
 import com.airport.flightsschedule.flightstatus.utils.ShowNativeAd.AdMobNativeAdLoadListener;
+import com.airport.flightsschedule.flightstatus.viewmodel.HistoryViewModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
@@ -43,11 +46,12 @@ public class GetFlights implements AdMobNativeAdLoadListener {
     private final ProgressBar loading;
     private final List<Object> recyclerViewItemsArrDep;
 
-    private RecyclerView arrivalsRV, departuresRV;
+    private RecyclerView arrivalsRV, departuresRV, nearbyAirportsRV;
     private RecyclerView.LayoutManager layoutManager;
-    private JSONArray jsonArrayArrival, jsonArrayDeparture;
+    private JSONArray jsonArrayArrival, jsonArrayDeparture, jsonArrayNearbyAirports;
     private ArrDepAdapter arrDepAdapter;
     private OnAPIResponse onAPIResponse;
+    private HistoryViewModel historyViewModel;
     private List<String[]> listAirports, listAirlines;
     private String responseType;
 
@@ -100,7 +104,7 @@ public class GetFlights implements AdMobNativeAdLoadListener {
         FlightClient flightClient = createRetrofitClient();
         responseType = type;
 
-        flightClient.getAirportSchedule(APIKey, iataCode, type).enqueue(new Callback<List<ArrivalsDepartures>>() {
+        flightClient.getAirportSchedule(APIKey, iataCode, type).enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<List<ArrivalsDepartures>> call, @NonNull Response<List<ArrivalsDepartures>> response) {
                 if (type.equals("arrival")) {
@@ -113,7 +117,7 @@ public class GetFlights implements AdMobNativeAdLoadListener {
                             new LoadArrivalData(GetFlights.this).execute();
                         } catch (JSONException | RuntimeException e) {
                             e.printStackTrace();
-                            Log.d("airport", "Exception: " + e.toString());
+                            Log.d("airport", "Exception: " + e);
                         }
                     } else {
                         Snackbar.make(flightsRecyclerView, context.getString(R.string.no_flights_found), Snackbar.LENGTH_SHORT).show();
@@ -130,7 +134,7 @@ public class GetFlights implements AdMobNativeAdLoadListener {
                             new LoadDepartureData(GetFlights.this).execute();
                         } catch (JSONException | RuntimeException e) {
                             e.printStackTrace();
-                            Log.d("airport", "Exception: " + e.toString());
+                            Log.d("airport", "Exception: " + e);
                         }
                     } else {
                         Snackbar.make(flightsRecyclerView, context.getString(R.string.no_flights_found), Snackbar.LENGTH_SHORT).show();
@@ -152,6 +156,92 @@ public class GetFlights implements AdMobNativeAdLoadListener {
                 Log.d("onFailure", t.toString());
             }
         });
+    }
+
+    public void getNearbyAirports(RecyclerView airportsRecyclerView, HistoryViewModel historyViewModel, String APIKey, double lat, double lng) {
+        FlightClient flightClient = createRetrofitClient();
+        nearbyAirportsRV = airportsRecyclerView;
+        this.historyViewModel = historyViewModel;
+
+        flightClient.getNearbyAirports(APIKey, lat, lng, 60).enqueue(new Callback<>() {
+            @Override
+            public void onResponse(@NonNull Call<List<Airport>> call, @NonNull Response<List<Airport>> response) {
+                if (response.body() != null) {
+                    String jsonResponse = new Gson().toJson(response.body());
+                    try {
+                        jsonArrayNearbyAirports = new JSONArray(jsonResponse);
+                        new LoadNearbyAirports(GetFlights.this).execute();
+                        Log.d("airports", "load nearby airports");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.d("airports", "json exception: " + e);
+                    }
+                } else Log.d("airports", "response body is null");
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<Airport>> call, @NonNull Throwable t) {
+                Log.d("airports", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    private void getNearbyAirports(RecyclerView airportsRecyclerView, HistoryViewModel historyViewModel, JSONArray jsonArray) {
+
+        ArrayList<Airport> airports = new ArrayList<>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            try {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                String codeIataAirport = jsonObject.getString("codeIataAirport");
+                String codeIcoaAirport = jsonObject.getString("codeIcaoAirport");
+                String codeIataCity = jsonObject.getString("codeIataCity");
+                String nameAirport = jsonObject.getString("nameAirport");
+                String nameCountry = jsonObject.getString("nameCountry");
+
+                double distance = jsonObject.getDouble("distance");
+                double latitudeAirport = jsonObject.getDouble("latitudeAirport");
+                double longitudeAirport = jsonObject.getDouble("longitudeAirport");
+
+                Airport airport = new Airport();
+
+                airport.setNameAirport(nameAirport);
+                airport.setCodeIataCity(codeIataCity);
+
+                for (int j = 0; j < listAirports.size(); j++) {
+                    String codeICAO = listAirports.get(j)[2];
+                    String codeIATA = listAirports.get(j)[3];
+                    if (codeICAO != null && !codeICAO.matches("") && codeICAO.matches(codeIcoaAirport)) {
+                        airport.setCodeIataCity(listAirports.get(j)[0]);
+                        if (nameAirport.isEmpty())
+                            airport.setNameAirport(listAirports.get(j)[4]);
+                        break;
+                    } else if (codeIATA != null && !codeIATA.matches("") && codeIATA.matches(codeIataAirport)) {
+                        airport.setCodeIataCity(listAirports.get(j)[0]);
+                        if (nameAirport.isEmpty())
+                            airport.setNameAirport(listAirports.get(j)[4]);
+                        break;
+                    }
+                }
+
+                airport.setNameCountry(nameCountry);
+                airport.setCodeIcaoAirport(codeIcoaAirport);
+                airport.setCodeIataAirport(codeIataAirport);
+                airport.setLatitudeAirport(latitudeAirport);
+                airport.setLongitudeAirport(longitudeAirport);
+                airport.setDistance(distance);
+
+                airports.add(airport);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            airportsRecyclerView.setLayoutManager(layoutManager);
+            airportsRecyclerView.setAdapter(new NearbyAirportsAdapter(context, airports, historyViewModel));
+        }, 3000);
     }
 
     private void getAirportFlights(RecyclerView flightsRecyclerView, JSONArray jsonArray, int startIndex, int offsetIndex) {
@@ -385,8 +475,10 @@ public class GetFlights implements AdMobNativeAdLoadListener {
 
                 JSONObject flightObj = jsonObject.getJSONObject("flight");
                 Flight flight = new Flight();
+
                 flight.setIataNumber(flightObj.getString("iataNumber"));
                 flight.setIcaoNumber(flightObj.getString("icaoNumber"));
+
                 if (flightObj.has("number"))
                     flight.setNumber(flightObj.getString("number"));
                 else
@@ -407,8 +499,10 @@ public class GetFlights implements AdMobNativeAdLoadListener {
                 this.recyclerViewItemsArrDep.add(arrivalsDeparture);
                 if (count != -1) count++;
             }
+
             addAdMobNativeAds();
             loadAdMobNativeAdsArrDep(firstIndex);
+
             if (isFirstTime) {
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                     arrDepAdapter = new ArrDepAdapter(context, recyclerViewItemsArrDep, loading);
@@ -534,6 +628,22 @@ public class GetFlights implements AdMobNativeAdLoadListener {
         int ITEMS_PER_AD = 3;
         if (recyclerViewItemsArrDep.size() > 3)
             loadAdMobNativeAdsArrDep(firstIndex += ITEMS_PER_AD);
+    }
+
+    private static class LoadNearbyAirports extends AsyncTask<Void, Void, Void> {
+
+        private final WeakReference<GetFlights> weakReference;
+
+        public LoadNearbyAirports(GetFlights getFlights) {
+            weakReference = new WeakReference<>(getFlights);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            GetFlights getFlights = weakReference.get();
+            getFlights.getNearbyAirports(getFlights.nearbyAirportsRV, getFlights.historyViewModel, getFlights.jsonArrayNearbyAirports);
+            return null;
+        }
     }
 
     private static class LoadArrivalData extends AsyncTask<Void, Void, Void> {

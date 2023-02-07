@@ -1,4 +1,4 @@
-package com.airport.flightsschedule.flightstatus.flights;
+package com.airport.flightsschedule.flightstatus.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.airport.flightsschedule.flightstatus.activities.SplashActivity;
+import com.airport.flightsschedule.flightstatus.flights.ArrivalsDepartures;
+import com.airport.flightsschedule.flightstatus.flights.FlightClient;
+import com.airport.flightsschedule.flightstatus.flights.LiveFlight;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;

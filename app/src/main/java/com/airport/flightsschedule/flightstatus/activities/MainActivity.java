@@ -1,12 +1,21 @@
 package com.airport.flightsschedule.flightstatus.activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,16 +30,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.airport.flightsschedule.flightstatus.R;
+import com.airport.flightsschedule.flightstatus.flights.GetFlights;
 import com.airport.flightsschedule.flightstatus.utils.AutoCompleteTextAdapter;
 import com.airport.flightsschedule.flightstatus.utils.BottomDrawerDialog;
 import com.airport.flightsschedule.flightstatus.utils.CSVFileReader;
+import com.airport.flightsschedule.flightstatus.utils.CheckLocationEnabled;
 import com.airport.flightsschedule.flightstatus.utils.ShowNativeAd;
+import com.airport.flightsschedule.flightstatus.viewmodel.HistoryViewModel;
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -39,19 +56,45 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.nativead.NativeAdView;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.Priority;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationListener {
 
     AutoCompleteTextView airportAutoComplete;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle drawerToggle;
-    InterstitialAd mAdMobInterstitial;
+    private HistoryViewModel historyViewModel;
+    private RecyclerView nearbyAirportsRV;
+    private LocationManager mLocationManager;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
+    private InterstitialAd mAdMobInterstitial;
+    private int i = 0;
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        airportAutoComplete.setText("");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +126,38 @@ public class MainActivity extends AppCompatActivity {
             airports.add(airport);
         }
 
+        nearbyAirportsRV = findViewById(R.id.nearbyAirportsRV);
+
+        mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationRequest = LocationRequest.create();
+        locationRequest.setPriority(Priority.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(10 * 1000);
+        locationRequest.setFastestInterval(2 * 1000);
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+
+            }
+        };
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 98);
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION)) {
+                showLocationPermissionDialog();
+            } else {
+                if (CheckLocationEnabled.init(this).isLocationEnabled()) {
+                    requestLocationUpdate();
+                }
+            }
+        } else {
+            if (CheckLocationEnabled.init(this).isLocationEnabled()) {
+                requestLocationUpdate();
+            }
+        }
+
+        historyViewModel = new ViewModelProvider(this).get(HistoryViewModel.class);
+
         AutoCompleteTextAdapter autoCompleteAdapter = new AutoCompleteTextAdapter(this, R.layout.drop_down_list_item, R.id.list_item, airports);
         airportAutoComplete.setThreshold(2);
         airportAutoComplete.setAdapter(autoCompleteAdapter);
@@ -111,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
 
         ImageView more = findViewById(R.id.more);
+        TextView touchView = findViewById(R.id.touchView);
         ImageView close = navigationView.getHeaderView(0).findViewById(R.id.close);
 
         more.setOnClickListener(v -> {
@@ -122,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (close != null)
             close.setOnClickListener(v -> drawerLayout.closeDrawers());
+
+        touchView.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, SearchActivity.class)));
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -156,19 +234,50 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        View view = activity.getCurrentFocus();
-        if (view == null) {
-            view = new View(activity);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 98) {
+            if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                showLocationPermissionDialog();
+                Log.d("permission", "permission not granted");
+            } else {
+                if (CheckLocationEnabled.init(this).isLocationEnabled()) {
+                    requestLocationUpdate();
+                }
+                Log.d("permission", "permission granted");
+            }
         }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        airportAutoComplete.setText("");
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 98) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        requestLocationUpdate();
+                    } else {
+                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 98);
+                    }
+                } else {
+                    requestLocationUpdate();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        if (location != null && i == 0) {
+            Log.d("airports", "Location isn't null");
+            GetFlights getFlights = new GetFlights(this, null);
+            getFlights.getNearbyAirports(nearbyAirportsRV, historyViewModel, SplashActivity.APIKey, location.getLatitude(), location.getLongitude());
+            i++;
+        } else {
+            Log.d("airports", "Location is null");
+        }
     }
 
     @Override
@@ -179,6 +288,21 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ExitActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void showLocationPermissionDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
+        alertDialog.setTitle("Permission Required");
+        alertDialog.setMessage("Location Permission is required for accessing the nearby airports.");
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", (dialog, which) -> dialog.dismiss());
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Allow", (dialog, which) -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 98);
+                }
+            }
+        });
+        alertDialog.show();
     }
 
     private void rateApp() {
@@ -251,6 +375,43 @@ public class MainActivity extends AppCompatActivity {
         dialog.setView(view);
         dialog.show();
         drawerLayout.closeDrawers();
+    }
+
+    private void requestLocationUpdate() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            } else {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+                LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+                LocationServices.getFusedLocationProviderClient(this).getLastLocation().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Location location = task.getResult();
+                        if (location != null)
+                            onLocationChanged(location);
+                        else Log.d("airports", "Last location is null");
+                    }
+                });
+                Log.d("airports", "Location requested");
+            }
+        } else {
+            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+            LocationServices.getFusedLocationProviderClient(this).requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+            LocationServices.getFusedLocationProviderClient(this).getLastLocation().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Location location = task.getResult();
+                    if (location != null)
+                        onLocationChanged(location);
+                }
+            });
+        }
     }
 
     private void requestInterstitialAd() {

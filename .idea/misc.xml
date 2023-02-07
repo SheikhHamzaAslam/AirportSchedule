@@ -11,13 +11,16 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/ic_backspace.xml" value="0.375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.37037037037037035" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/ic_header_background.xml" value="0.3630769230769231" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/rectangle_bg.xml" value="0.215" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/round_corners_bg.xml" value="0.375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/round_top_corners.xml" value="0.3769230769230769" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/drawable/rounded_corners_bg.xml" value="0.2145" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_arrivals_departures.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_exit.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_flight_details.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_flight_info.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_search.xml" value="0.325" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/appcheckerrdialog.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/bottom_drawer_layout.xml" value="0.36666666666666664" />
@@ -30,6 +33,7 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/loading_data_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/native_ad_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/nav_header_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/nearby_airport_item.xml" value="0.33" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/privacy_policy_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/rate_us_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/user/AndroidStudioProjects/AirportSchedule/app/src/main/res/layout/unified_ad.xml" value="0.36666666666666664" />
@@ -38,7 +42,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

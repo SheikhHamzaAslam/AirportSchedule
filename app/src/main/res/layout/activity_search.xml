@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.SearchActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
@@ -44,7 +44,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/more" />
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/searchAirport"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
@@ -53,13 +53,11 @@
             android:layout_marginEnd="@dimen/_15sdp"
             android:autofillHints="@string/enter_airport_or_city_name"
             android:background="@drawable/rounded_corners_bg"
-            android:clickable="false"
             android:drawableEnd="@drawable/ic_search"
-            android:enabled="false"
             android:fontFamily="@font/raleway_semi_bold"
             android:hint="@string/enter_airport_or_city_name"
             android:imeOptions="actionSearch"
-            android:inputType="textAutoComplete|textAutoCorrect"
+            android:inputType="text"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/black_medium"
@@ -88,14 +86,24 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="@font/fira_sans_medium"
-        android:text="@string/nearby_airports"
+        android:text="@string/recent_search"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLayout" />
 
+    <ImageView
+        android:id="@+id/deleteAll"
+        android:layout_width="@dimen/_28sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nearbyAirportsRV"
+        android:id="@+id/recentSearchesRV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_5sdp"
@@ -104,16 +112,15 @@
         app:layout_constraintTop_toBottomOf="@+id/text"
         tools:listitem="@layout/nearby_airport_item" />
 
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_2sdp"
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/airportsRV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
         android:visibility="gone"
-        ads:adSize="MEDIUM_RECTANGLE"
-        ads:adUnitId="@string/main_rectangle_ad_"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
-        ads:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text"
+        tools:listitem="@layout/nearby_airport_item" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

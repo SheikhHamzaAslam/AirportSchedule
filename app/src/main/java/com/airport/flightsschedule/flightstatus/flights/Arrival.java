@@ -1,4 +1,3 @@
-
 package com.airport.flightsschedule.flightstatus.flights;
 
 import com.google.gson.annotations.Expose;
